@@ -37,8 +37,8 @@ def program(class_start_time, class_end_time, span_id):
         raise KeyError("Span_id should be <= 20")
     break_info = get_break_information(span_id)
     break_times = []
-    if class_end_time > class_start_time:
-        raise ValueError("Start time should be > than End time")
+    if class_end_time < class_start_time:
+        raise ValueError("Start time should be < than End time")
     for el in break_info:
         start_time = el["start_times"]
         start_type = el["start_time_type"]
@@ -69,7 +69,7 @@ def main():
         print("Start and End time should be in 'hour:minute:00' format")
         return
     span_id = sys.argv[3]
-    program(class_start_time, class_end_time, span_id)
+    print(program(class_start_time, class_end_time, span_id))
 
 
 if __name__ == "__main__":

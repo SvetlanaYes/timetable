@@ -34,4 +34,5 @@ def analyzer(all_possible_combinations):
     else:
         indexes = [i for i, x in enumerate(min_duration_of_break_combination) if x >= 120]
     result = [sample[x] for x in sample.keys() if x in indexes]
+
     return result
