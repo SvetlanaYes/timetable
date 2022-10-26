@@ -1,7 +1,20 @@
-# python3.7 >
-import sys
-import json
-from datetime import time
+'''
+Implemented by Svetlana Yesayan and Inesa Aficaryan.
+Description:
+    The program get all possible breaks for given start time, end time and span_id from json file
+Libraries:
+    time, sys, json
+Usage: python3 program.py
+'''
+try:
+    import os
+    import sys
+    import json
+    from datetime import time
+except ImportError as exception:
+    print("%s - Please install the necessary libraries." % exception)
+    sys.exit(1)
+
 import utils.CartesianProduct as cartesian
 from src.class_.Break import Break
 from utils.Analyzer import analyzer
@@ -9,11 +22,10 @@ from utils.TimeOperations import sub_times, add_times
 
 data = 'utils/data.json'
 
-
 def get_break_information(span_id):
     with open(data, 'r') as f:
         break_info = json.load(f)
-    return break_info[span_id]
+    return break_info[str(span_id)]
 
 
 def get_real_times(shift, class_start, class_end, start_type, break_duration):
@@ -69,7 +81,12 @@ def main():
         print("Start and End time should be in 'hour:minute:00' format")
         return
     span_id = sys.argv[3]
-    print(program(class_start_time, class_end_time, span_id))
+    result = program(class_start_time, class_end_time, span_id)
+    for i in result:
+        for j in i:
+            print(j.start, j.end, j.duration)
+    else:
+        print([])
 
 
 if __name__ == "__main__":

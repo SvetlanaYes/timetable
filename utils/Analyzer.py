@@ -1,6 +1,4 @@
-from utils.TimeOperations import sub_times, add_times
-from datetime import time
-
+from utils.TimeOperations import sub_times
 
 def get_break_durations(possible_combination):
     durations = []
@@ -33,6 +31,6 @@ def analyzer(all_possible_combinations):
         indexes = [i for i, x in enumerate(min_duration_of_break_combination) if x == max_]
     else:
         indexes = [i for i, x in enumerate(min_duration_of_break_combination) if x >= 120]
-    result = [sample[x] for x in sample.keys() if x in indexes]
+    result = [list(sample[x]) for x in sample.keys() if x in indexes]
 
     return result
