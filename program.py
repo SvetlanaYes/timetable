@@ -22,6 +22,7 @@ from utils.TimeOperations import sub_times, add_times
 
 data = 'utils/data.json'
 
+
 def get_break_information(span_id):
     with open(data, 'r') as f:
         break_info = json.load(f)
@@ -49,6 +50,7 @@ def program(class_start_time, class_end_time, span_id):
         raise KeyError("Span_id should be <= 20")
     break_info = get_break_information(span_id)
     break_times = []
+    print(break_info)
     if class_end_time < class_start_time:
         raise ValueError("Start time should be < than End time")
     for el in break_info:
@@ -65,6 +67,11 @@ def program(class_start_time, class_end_time, span_id):
         if not break_times_element:
             return []
         break_times.append(break_times_element)
+    if len(break_times) == 1:
+        filtered_combinations = []
+        for el in break_times:
+            filtered_combinations.append(el)
+            return filtered_combinations
     all_possible_combinations = cartesian.Cartesian(break_times)
     filtered_combinations = analyzer(all_possible_combinations)
     return filtered_combinations
@@ -82,11 +89,12 @@ def main():
         return
     span_id = sys.argv[3]
     result = program(class_start_time, class_end_time, span_id)
-    for i in result:
-        for j in i:
-            print(j.start, j.end, j.duration)
-    else:
-        print([])
+
+    if result:
+        for i in result:
+            for j in i:
+                print(j.start, j.end, j.duration)
+
 
 
 if __name__ == "__main__":
