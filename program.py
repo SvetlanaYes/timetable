@@ -50,7 +50,6 @@ def program(class_start_time, class_end_time, span_id):
         raise KeyError("Span_id should be <= 20")
     break_info = get_break_information(span_id)
     break_times = []
-    print(break_info)
     if class_end_time < class_start_time:
         raise ValueError("Start time should be < than End time")
     for el in break_info:
