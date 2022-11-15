@@ -64,6 +64,11 @@ def program(class_start_time, class_end_time, span_id):
                 continue
             break_times_element.append(Break(real_start, real_end, break_duration))
         if not break_times_element:
+            # You need to place as much as possible. I mean there might be a following case you have 4 templates 
+            # and there is a template from which break can not be place that does not mean that you should not place breakes at all.
+            # For example we use the same span for monday and wednesday:
+            # On Monday you have 7hours of classes and hence you will have 3 breaks place but let's say on wednesday you have 3 hours of classes.
+            # would it be right to not place breakes because of that? :)
             return []
         break_times.append(break_times_element)
     if len(break_times) == 1:
