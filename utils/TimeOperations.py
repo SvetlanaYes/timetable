@@ -1,5 +1,5 @@
 from datetime import time
-
+# You can use timedelta for the times by that you will avoid this kind of code
 
 def add_times(time1, time2):
     hour = time1.hour + time2.hour
