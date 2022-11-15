@@ -16,7 +16,7 @@ def analyzer(all_possible_combinations):
     min_duration_of_break_combination = []
     sample = {}
     count = 0
-    for i, el in enumerate(all_possible_combinations):
+    for el in all_possible_combinations:
         durations = get_break_durations(el)
         if durations:
             sample[count] = el
