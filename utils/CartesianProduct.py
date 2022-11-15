@@ -1,3 +1,5 @@
+# Great implementation :)
+
 def Cartesian(ar_list):
     if not ar_list:
         yield ()
