@@ -3,6 +3,23 @@ import datetime
 from timetable.program import program
 
 
+
+import unittest
+
+class TestResults(unittest.TestCase):
+
+    def test1(self):
+        start_class_time = datetime.time(9, 0, 0)
+        end_class_time = datetime.time(17, 0, 0)
+        span_id = 1
+        result = program(start_class_time, end_class_time, span_id)
+        correct_result = [[Break(datetime.time(10, 30, 0), datetime.time(10, 45, 0), 15), Break(datetime.time(11, 0, 0), datetime.time(11, 15, 0), 15), Break(datetime.time(11, 30, 0), datetime.time(11, 45, 0), 15), Break(datetime.time(12, 0, 0), datetime.time(12, 15, 0), 15), Break(datetime.time(12, 30, 0), datetime.time(13, 30, 0), 60)]]
+        for element1, element2 in zip(list1, list2):
+            for el1, el2 in zip(element1, element2):
+                self.assertEqual(el1, el2)
+        
+        
+        
 def isEqual(list1, list2):
     for element1, element2 in zip(list1, list2):
         for el1, el2 in zip(element1, element2):
